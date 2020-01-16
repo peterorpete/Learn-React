@@ -1,10 +1,143 @@
 # Learn-React
 
-### 2020-01-15 15:39:06
+### 2020-01-16 12:26:24
+#### JSX Conditionals: &&
+Below judmental when false the Nacho cheez will appear
+~~~
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+// judgmental will be true half the time.
+const judgmental = Math.random() < 0.5;
+
+const favoriteFoods = (
+  <div>
+    <h1>My Favorite Foods</h1>
+    <h1>judgmental is {judgmental === true ? 'true' : 'false'}</h1>
+    <ul>
+      <li>Sushi Burrito</li>
+      <li>Rhubarb Pie</li>
+      {!judgmental && <li>Nacho Cheez Straight Out The Jar</li>}
+      <li>Broiled Grapefruit</li>
+    </ul>
+  </div>
+);
+
+ReactDOM.render(
+	favoriteFoods, 
+	document.getElementById('app')
+);
+
+~~~
+
+Every time that you see && in below example, either some code will run, or else no code will run.
+
+&& works best in conditionals that will sometimes do an action, but other times do nothing at all.
+
+~~~
+const tasty = (
+  <ul>
+    <li>Applesauce</li>
+    { !baby && <li>Pizza</li> }
+    { age > 15 && <li>Brussels Sprouts</li> }
+    { age > 20 && <li>Oysters</li> }
+    { age > 25 && <li>Grappa</li> }
+  </ul>
+);
+~~~
+
+#### JSX Conditionals: The Ternary Operator
+~~~
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+function coinToss () {
+  // Randomly return either 'heads' or 'tails'.
+  return Math.random() < 0.5 ? 'heads' : 'tails';
+}
+
+const pics = {
+  kitty: 'https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-kitty.jpg',
+  doggy: 'https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-puppy.jpeg'
+};
+
+const img = <img src={pics[coinToss() === 'heads' ? 'kitty' : 'doggy']} />;
+
+ReactDOM.render(
+	img, 
+	document.getElementById('app')
+);
+~~~
+~~~
+const headline = (
+  <h1>
+    { age >= drinkingAge ? 'Buy Drink' : 'Do Teen Stuff' }
+  </h1>
+);
+~~~
+
+#### JSX Conditionals: If Statements That Don't Work
+
+~~~
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+function coinToss() {
+  // This function will randomly return either 'heads' or 'tails'.
+  return Math.random() < 0.5 ? 'heads' : 'tails';
+}
+
+const pics = {
+  kitty: 'https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-kitty.jpg',
+  doggy: 'https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-puppy.jpeg'
+};
+let img;
+
+// if/else statement begins here:
+if (coinToss() === "heads")
+ {
+  img = (
+    <img src={pics.kitty} />
+    )
+} else {
+ img = (
+    <img src={pics.doggy} />
+    )
+}
+
+ReactDOM.render(img, document.getElementById('app'));
+~~~
+
 #### Event Listeners in JSX
 
+Note that in HTML, event listener names are written in all lowercase, such as onclick or onmouseover. In JSX, event listener names are written in camelCase, such as onClick or onMouseOver.
 
-----
+An event listener attribute’s value should be a function. 
+
+
+~~~
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+function makeDoggy(e) {
+  // Call this extremely useful function on an <img>.
+  // The <img> will become a picture of a doggy.
+  e.target.setAttribute('src', 'https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-puppy.jpeg');
+  e.target.setAttribute('alt', 'doggy');
+}
+
+const kitty = (
+	<img 
+		src="https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-kitty.jpg" 
+		alt="kitty"
+    onClick={makeDoggy}/>
+);
+
+ReactDOM.render(kitty, document.getElementById('app'));
+~~~
+
+### 2020-01-15 15:39:06
+
 When writing JSX, it’s common to use variables to set attributes.
 
 ~~~
