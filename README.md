@@ -2,7 +2,7 @@
 
 ### 2020-01-16 12:26:24
 #### JSX Conditionals: &&
-Below judmental when false the Nacho cheez will appear
+Below code the const judmental when false Nacho cheez will appear
 ~~~
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -32,7 +32,7 @@ ReactDOM.render(
 
 Every time that you see && in below example, either some code will run, or else no code will run.
 
-&& works best in conditionals that will sometimes do an action, but other times do nothing at all.
+**&&** works best in conditionals that will sometimes do an action, but other times do nothing at all.
 
 ~~~
 const tasty = (
