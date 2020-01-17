@@ -1,4 +1,72 @@
 # Learn-React
+### 2020-01-17 10:20:31
+#### THE COMPONENT
+~~~
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class MyComponentClass extends React.Component {
+  render() {
+    return <h1>Hello world</h1>;
+  }
+};
+
+ReactDOM.render(
+  <MyComponentClass />,
+  document.getElementById('app')
+);
+
+~~~
+#### React.createElement
+You can write React code without using JSX at all!
+
+The majority of React programmers do use JSX, and we will use it for the remainder of this tutorial, but you should understand that it is possible to write React code without it.
+
+The following JSX expression:
+~~~
+const h1 = <h1>Hello world</h1>;
+can be rewritten without JSX, like this:
+
+const h1 = React.createElement(
+  "h1",
+  null,
+  "Hello, world"
+);
+~~~
+
+#### Keys
+**keys** don’t do anything that you can see! React uses them internally to keep track of lists. If you don’t use keys when you’re supposed to, React might accidentally scramble your list-items into the wrong order.
+
+~~~
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const people = ['Rowe', 'Prevost', 'Gare'];
+
+const peopleLis = people.map((person, i) =>
+  // expression goes here:
+  <li key={'person_' + i}>{person}</li>
+);
+
+// ReactDOM.render goes here:
+ReactDOM.render(<ul>{peopleLis}</ul>, document.getElementById('app'));
+~~~
+
+#### .map in JSX
+~~~
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const people = ['Rowe', 'Prevost', 'Gare'];
+
+const peopleLis = people.map(person =>
+  // expression goes here:
+  <li>{person}</li>
+);
+
+// ReactDOM.render goes here:
+ReactDOM.render(<ul>{peopleLis}</ul>, document.getElementById('app'));
+~~~
 
 ### 2020-01-16 12:26:24
 #### JSX Conditionals: &&
