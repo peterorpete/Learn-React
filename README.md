@@ -1,4 +1,50 @@
 # Learn-React
+### 2020-01-23 11:57:58
+~~~
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class MyComponentClass extends React.Component {
+  render() {
+    return <h1>Hello world</h1>;
+  }
+}
+
+// component goes here:
+ReactDOM.render(
+  <MyComponentClass/>,
+  document.getElementById('app')
+  )
+~~~
+A render method must contain a return statement. Usually, this return statement returns a JSX expression:
+
+~~~
+class ComponentFactory extends React.Component {
+  render() {
+    return <h1>Hello world</h1>;
+  }
+}
+~~~
+
+A render method is a property whose name is render, and whose value is a function. The term “render method” can refer to the entire property, or to just the function part.
+
+~~~
+class ComponentFactory extends React.Component {
+  render() {}
+}
+~~~
+
+Component class variable names must begin with capital letters eg **MyComponentClass**!
+
+~~~
+import React from "react"
+import ReactDOM from 'react-dom'
+
+class MyComponentClass extends React.Component {
+  
+}
+~~~
+
 ### 2020-01-17 10:20:31
 #### THE COMPONENT
 ~~~
