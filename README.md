@@ -1,4 +1,154 @@
 # Learn-React
+### 2020-02-05 09:43:38
+## Component Rendering In Action
+#### ProfilePage.js
+~~~
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { NavBar } from './NavBar.js';
+
+
+class ProfilePage extends React.Component {
+  render() {
+    return (
+      <div>
+`        <NavBar />
+        <h1>All About Me!</h1>
+        <p>I like movies and blah blah blah blah blah</p>
+        <img src="https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-monkeyselfie.jpg" />
+      </div>
+    );
+  }
+}
+ReactDOM.render(<ProfilePage />, document.getElementById('app'));
+
+~~~
+#### NavBar.js
+~~~
+import React from 'react';
+
+export class NavBar extends React.Component {
+  render() {
+    const pages = ['home', 'blog', 'pics', 'bio', 'art', 'shop', 'about', 'contact'];
+    const navLinks = pages.map(page => {
+      return (
+        <a href={'/' + page}>
+          {page}
+        </a>
+      )
+    });
+
+    return <nav>{navLinks}</nav>;
+  }
+}
+~~~
+## Exporting a file
+When you import a variable from a file that is not the current file, then an **import statement isn’t** quite enough. You also need an **export statement**, written in the other file, exporting the variable that you hope to grab.
+
+
+~~~
+import React from 'react';
+
+export class NavBar extends React.Component {
+  render() {
+    const pages = ['home', 'blog', 'pics', 'bio', 'art', 'shop', 'about', 'contact'];
+    const navLinks = pages.map(page => {
+      return (
+        <a href={'/' + page}>
+          {page}
+        </a>
+      )
+    });
+
+    return <nav>{navLinks}</nav>;
+  }
+}
+~~~
+## Requiring a file
+~~~
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { NavBar } from './NavBar.js';
+
+
+class ProfilePage extends React.Component {
+  render() {
+    return (
+      <div>
+`        <NavBar />
+        <h1>All About Me!</h1>
+        <p>I like movies and blah blah blah blah blah</p>
+        <img src="https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-monkeyselfie.jpg" />
+      </div>
+    );
+  }
+}
+~~~
+## Use an Event Listener in a Component
+~~~
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class Button extends React.Component {
+  scream() {
+    alert('AAAAAAAAHHH!!!!!');
+  }
+
+  render() {
+    return <button onClick={this.scream}>BrAAAAAH!</button>;
+  }
+}
+
+ReactDOM.render(<Button />, document.getElementById('app'));
+
+~~~
+
+## Use **this** in a Component
+~~~
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class MyName extends React.Component {
+	// name property goes here:
+  get name() {
+    return 'Peter';
+  }
+
+
+  render() {
+    return <h1>My name is {this.name}.</h1>;
+  }
+}
+
+ReactDOM.render(<MyName />, document.getElementById('app'));
+~~~
+### 2020-02-04 16:12:11
+## Use a Conditional in a Render Function
+~~~
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const fiftyFifty = Math.random() < 0.5;
+
+// New component class starts here:
+
+class TonightsPlan extends React.Component {
+    render() {
+      let task;
+        if (!fiftyFifty) {
+             task = 'out'
+        } else {
+             task = 'to bed'
+        }
+        return <h1>Tonight I'm going {task} WOOO</h1>;
+      }
+}
+
+ReactDOM.render(
+	<TonightsPlan />,
+	document.getElementById('app')
+);
+~~~
 ### 2020-01-23 11:57:58
 ~~~
 import React from 'react';
