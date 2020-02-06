@@ -1,4 +1,151 @@
 # Learn-React
+#### 2020-02-06 10:45:00
+## Render Different UI Based on props
+### greeting.js
+~~~
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+export class Greeting extends React.Component {
+  render() {
+  	if (this.props.signedIn == false) {
+  	  return <h1>GO AWAY</h1>;
+  	} else {
+  	  return <h1>Hi there, {this.props.name}!</h1>;
+  	}
+  }
+}
+~~~
+### app.js
+~~~
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Greeting } from './Greeting';
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>
+          Hullo and, "Welcome to The Newzz," "On Line!"
+        </h1>
+        <Greeting name="Alison" signedIn={true} />
+        <article>
+          Latest:  where is my phone?
+        </article>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <App />, 
+  document.getElementById('app')
+);
+~~~
+## Pass props From Component To Component
+### Exporting from Greetings.js
+~~~
+import React from 'react';
+
+export class Greeting extends React.Component {
+  render() {
+    return <h1>Hi there, {this.props.name}!</h1>;
+  }
+}
+~~~
+### Importing into App.js
+~~~
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Greeting} from './Greeting.js';
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>
+          Hullo and, "Welcome to The Newzz," "On Line!"
+        </h1>
+        <Greeting name="name"/>
+        <article>
+          Latest newzz:  where is my phone?
+        </article>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <App />, 
+  document.getElementById('app')
+);
+~~~
+
+
+
+
+
+
+
+## Render a Component's props
+
+~~~
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class Greeting extends React.Component {
+  render() {
+    return <h1>Hi there, {this.props.firstName}!</h1>;
+  }
+}
+
+ReactDOM.render(
+  <Greeting firstName='Pete' />, 
+  document.getElementById('app')
+);
+~~~
+## Render a Component's props
+
+~~~
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class Greeting extends React.Component {
+  render() {
+    return <h1>Hi there, {this.props.firstName}!</h1>;
+  }
+}
+
+ReactDOM.render(
+  <Greeting firstName='Pete' />, 
+  document.getElementById('app')
+);
+~~~
+~~~
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class PropsDisplayer extends React.Component {
+  render() {
+  	const stringProps = JSON.stringify(this.props);
+
+    return (
+      <div>
+        <h1>CHECK OUT MY PROPS OBJECT</h1>
+        <h2>{stringProps}</h2>
+      </div>
+    );
+  }
+}
+
+// ReactDOM.render goes here:
+ReactDOM.render(
+  <PropsDisplayer myProp="Hello" />,
+  document.getElementById('app')
+);
+~~~
+
 ### 2020-02-05 09:43:38
 ## Component Rendering In Action
 #### ProfilePage.js
