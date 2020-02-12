@@ -1,4 +1,70 @@
 # Learn-React
+#### 2020-02-12 12:30:18
+
+## handleEvent, onEvent, and this.props.onEvent
+### Taker.js
+~~~
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Button } from './Button';
+
+class Talker extends React.Component {
+  handleClick() {
+    let speech = '';
+    for (let i = 0; i < 10000; i++) {
+      speech += 'blah ';
+    }
+    alert(speech);
+  }
+  
+  render() {
+    return <Button onClick={this.handleClick}/>;
+  }
+}
+
+ReactDOM.render(
+  <Talker />,
+  document.getElementById('app')
+);
+~~~
+
+### Button
+~~~
+import React from 'react';
+
+export class Button extends React.Component {
+  render() {
+    return (
+      <button onClick={this.props.onClick}>
+        Click me!
+      </button>
+    );
+  }
+}
+~~~
+## Put an Event Handler in a Component Class
+
+You define an event handler as a method on the component class, just like the render method. Almost all functions that you define in React will be defined in this way, as methods in a class.
+~~~
+import React from 'react';
+
+class Example extends React.Component {
+  handleEvent() {
+    alert(`I am an event handler.
+      If you see this message,
+      then I have been called.`);
+  }
+
+  render() {
+    return (
+      <h1 onClick={this.handleEvent}>
+        Hello world
+      </h1>
+    );
+  }
+}
+~~~
+
 #### 2020-02-06 10:45:00
 ## Render Different UI Based on props
 ### greeting.js
